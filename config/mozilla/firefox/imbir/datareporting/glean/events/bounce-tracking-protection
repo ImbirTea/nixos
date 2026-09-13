@@ -1,0 +1,8 @@
+{"timestamp":11972132,"category":"bounce.tracking.protection","name":"purge_action","extra":{"glean_timestamp":"1789318948568","is_dry_run":"true","success":"true","bounce_time":"1789311001","site_host":"google.bg"}}
+{"timestamp":18489951,"category":"glean","name":"restarted","extra":{"glean.startup.date":"2026-09-13T21:51+03:00","glean_timestamp":"1789325466386"},"execution_counter":1}
+{"timestamp":18712123,"category":"glean","name":"restarted","extra":{"glean.startup.date":"2026-09-13T21:54+03:00","glean_timestamp":"1789325688559"},"execution_counter":2}
+{"timestamp":19529,"category":"glean","name":"restarted","extra":{"glean.startup.date":"2026-09-13T21:58+03:00","glean_timestamp":"1789325937549"},"execution_counter":3}
+{"timestamp":160722,"category":"glean","name":"restarted","extra":{"glean.startup.date":"2026-09-13T22:01+03:00","glean_timestamp":"1789326078294"},"execution_counter":4}
+{"timestamp":19611,"category":"glean","name":"restarted","extra":{"glean.startup.date":"2026-09-13T22:02+03:00","glean_timestamp":"1789326150818"},"execution_counter":5}
+{"timestamp":54807,"category":"glean","name":"restarted","extra":{"glean.startup.date":"2026-09-13T22:03+03:00","glean_timestamp":"1789326186014"},"execution_counter":6}
+{"timestamp":7254568,"category":"bounce.tracking.protection","name":"purge_action","extra":{"success":"true","is_dry_run":"true","site_host":"microsoftonline.com","glean_timestamp":"1789333385775","bounce_time":"1789327087"},"execution_counter":6}

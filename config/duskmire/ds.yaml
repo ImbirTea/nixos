@@ -1,0 +1,142 @@
+# Duskmire — universal color palette (v3)
+# ------------------------------------------------------------------
+# Mood inherited from: miasma (foggy, low-contrast neutrals)
+# Style family:        gruvbox-like (systematic warm accent ramp)
+# Structure modeled on: kape's palette module
+#
+# v3: chroma pulled back ~15% across accents/text (same hues, same lightness)
+# for a slightly paler look, per request.
+#
+# v2: rebuilt directly in OKLCH (perceptually uniform L/C), not HSL — see
+# design_notes at the bottom. Every accent now clears a 4.5:1 contrast
+# ratio against bg1 (Neovim's own colorscheme guideline threshold for
+# colored syntax: https://neovim.io/doc/user/dev_theme.html), which none
+# of the three reference palettes achieve for their red/orange accents.
+#
+# Tool-agnostic export. Every value here is unique — no hex reused from
+# any of the reference palettes it was designed alongside (checked
+# programmatically). Use this file as the single source of truth when
+# porting Duskmire into an editor colorscheme, a terminal emulator, tmux,
+# a status bar, a launcher, etc.
+# ------------------------------------------------------------------
+
+meta:
+  name: duskmire
+  variant: dark
+  description: "Warm fog over dark moss — miasma's mist, gruvbox's groove."
+
+background:
+  bg0: "#0a0905"   # deepest — floats, popups, sidebar
+  bg1: "#15140f"   # main editor / terminal background
+  bg2: "#201f1a"   # cursorline / subtle line highlight
+  bg3: "#2f2e27"   # selection base, popup borders, statusline bg
+  bg4: "#414038"   # active tab, lighter chrome
+
+foreground:
+  fg1: "#d7cdb2"   # main text        — 11.65:1 on bg1
+  fg2: "#aba492"   # secondary text   —  7.43:1 on bg1
+  fg3: "#7e7a6e"   # dimmed / inactive UI — 4.30:1 on bg1
+  fg4: "#6f6c63"   # comments         —  3.51:1 on bg1 (deliberately below
+                    #                     4.5 — see design_notes)
+  fg5: "#34332e"   # faint borders / ignored text
+
+accents:
+  # hue family: terracotta / amber / mustard gold / moss green / verdigris teal / dusty plum
+  # each one clears 4.5:1 against bg1 (Neovim's "colored syntax" bar)
+  accent1: "#c26f5c"   # 5.02:1
+  accent2: "#d3a269"   # 8.03:1
+  accent3: "#d0be76"   # 9.93:1
+  accent4: "#89ad70"   # 7.27:1
+  accent5: "#6aa7a2"   # 6.73:1
+  accent6: "#b381a7"   # 5.81:1
+  blue:    "#7d9cc7"   # 6.54:1 — utility accent, kept apart from the main warm ramp
+
+bright:
+  red:    "#e8866f"
+  orange: "#f7bc78"
+  yellow: "#f1da85"
+  green:  "#a1cb82"
+  aqua:   "#77c6c1"
+  blue:   "#92b8ee"
+  purple: "#d698c8"
+
+bg_visual:
+  red:    "#220d08"
+  yellow: "#191300"
+  green:  "#0d1705"
+  blue:   "#081425"
+  purple: "#1e0d1b"
+
+bg_diff:
+  red:   "#200c08"
+  green: "#0d1607"
+  blue:  "#091322"
+
+# ------------------------------------------------------------------
+# Standard 16-color ANSI mapping — for terminal emulators (alacritty,
+# kitty, wezterm, foot, ...), tmux, and anything expecting a classic
+# 0–15 palette. Derived from the roles above, nothing new introduced.
+# ------------------------------------------------------------------
+ansi:
+  normal:
+    black:   "#201f1a"   # bg2 — kept a shade above true bg so it stays visible
+    red:     "#c26f5c"   # accent1
+    green:   "#89ad70"   # accent4
+    yellow:  "#d0be76"   # accent3
+    blue:    "#7d9cc7"   # blue
+    magenta: "#b381a7"   # accent6
+    cyan:    "#6aa7a2"   # accent5
+    white:   "#aba492"   # fg2
+  bright:
+    black:   "#6f6c63"   # fg4
+    red:     "#e8866f"
+    green:   "#a1cb82"
+    yellow:  "#f1da85"
+    blue:    "#92b8ee"
+    magenta: "#d698c8"
+    cyan:    "#77c6c1"
+    white:   "#d7cdb2"   # fg1
+
+foreground_default: "#d7cdb2"   # fg1
+background_default: "#15140f"   # bg1
+cursor: "#d0be76"                # accent3, mirrors miasma's gold cursor role
+
+# ------------------------------------------------------------------
+# base16 / base24 mapping — the tinted-theming.github.io standard.
+# Drop these 16 slots into any base16 template (https://github.com/
+# tinted-theming, ~230 schemes / 70+ supported apps) to get Duskmire
+# ported into everything from terminals to browsers to Rofi with zero
+# extra design work. Slot meanings per the official spec (base16/
+# styling.md): base00–07 are a dark→light monochrome ladder used for
+# backgrounds and text; base08–0F are the 8 accent roles.
+# ------------------------------------------------------------------
+base16:
+  base00: "#15140f"   # Default Background                          = bg1
+  base01: "#201f1a"   # Lighter Background (status bars, line#/fold) = bg2
+  base02: "#2f2e27"   # Selection Background                        = bg3
+  base03: "#6f6c63"   # Comments, Invisibles, Line Highlighting     = fg4
+  base04: "#7e7a6e"   # Dark Foreground (status bars)                = fg3
+  base05: "#d7cdb2"   # Default Foreground, Caret, Delimiters, Ops   = fg1
+  base06: "#d7cdb2"   # Light Foreground (rarely used)                = fg1
+  base07: "#414038"   # Light Background (rarely used)                = bg4
+  base08: "#c26f5c"   # Variables, XML Tags, Diff Deleted            = accent1 (red)
+  base09: "#d3a269"   # Integers, Boolean, Constants                 = accent2 (orange)
+  base0A: "#d0be76"   # Classes, Markup Bold, Search BG               = accent3 (yellow)
+  base0B: "#89ad70"   # Strings, Diff Inserted                       = accent4 (green)
+  base0C: "#6aa7a2"   # Support, Regex, Escape Chars, Quotes         = accent5 (cyan)
+  base0D: "#7d9cc7"   # Functions, Methods, Headings                 = blue
+  base0E: "#b381a7"   # Keywords, Storage, Diff Changed              = accent6 (purple)
+  base0F: "#725246"   # Deprecated, embedded-lang tags (e.g. <?php ?>) — muted umber,
+                        #  only defined here, not part of the main 6-accent identity
+
+design_notes:
+  - "Contrast target: Neovim's own dev_theme guideline asks for >=7:1 on Normal
+     and >=4.5:1 on colored syntax/Visual/Diff/Search. fg1-on-bg1 sits at
+     11.65:1; every accent clears 4.5:1. Comments (fg4) sit at 3.51:1 —
+     kept intentionally soft, in miasma's spirit, but still above miasma's
+     own ~2.8:1."
+  - "Built in OKLCH, not HSL, so lightness steps are perceptually even across
+     hues (equal-looking HSL L values do not look equally bright across
+     different hues; OKLCH L does)."
+  - "No hex value duplicated from the miasma / gruvbox / kape source files
+     this was designed alongside (checked programmatically)."
